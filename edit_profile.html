@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Profile</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body {
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
+    background-color: white;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.hero_area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    border-radius:300px 0 350px 0; /* Changed border-radius to 20px */
+    background-color: #7335b7 ;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #f8842b;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d5661e;
+}
+
+</style>
+<body>
+    <div class="hero_area">
+        <div class="form-container">
+            <h1>Edit Profile</h1>
+            <form id="edit-profile-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="dob">Date of Birth:</label>
+                <input type="text" id="dob" name="dob" required>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="4" required></textarea>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById("edit-profile-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                // Get form data
+                var formData = new FormData(event.target);
+                // Convert form data to JSON object
+                var jsonObject = {};
+                formData.forEach(function(value, key) {
+                    jsonObject[key] = value;
+                });
+                // Save data to localStorage
+                localStorage.setItem("profileData", JSON.stringify(jsonObject));
+                // Redirect to user profile page
+                window.location.href = "user_profile.html";
+            });
+        </script>
+    </div>
+</body>
+</html>
+

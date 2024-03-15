@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<style>
+
+body {
+font-family: "Poppins", sans-serif;
+      color: #ffffff;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  
+}
+.hero_area {
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #7335b7;
+  border-radius: 300px 0 350px 0;
+  padding-top: 20px;
+  font-size: 25px;
+  text-decoration: #ffffff;
+
+}
+</style>
+<body>
+    <center>
+        <div class="hero_area">
+    <div class="profile-pic" onclick="selectProfilePicture()">
+        <img id="profile-image" src="user.png" alt="Profile Picture" style="width: 10%;">
+    </div>
+    
+   
+    <div id="profile-info">
+        <!-- User profile information will be displayed here -->
+    </div>
+
+    <button onclick="editProfile()" 
+    style=" width: 10%;
+    padding: 10px 0;
+    background-color: #f8842b;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    margin-left: 45%;
+    cursor: pointer;">Edit Profile</button>
+
+    <script>
+        // Get profile data from localStorage
+        var profileData = JSON.parse(localStorage.getItem("profileData"));
+        // Display profile data
+        if (profileData) {
+            var profileInfo = document.getElementById("profile-info");
+            // Iterate through each property in the profileData object
+            for (var key in profileData) {
+                // Check if the property is not a function or prototype property
+                if (profileData.hasOwnProperty(key)) {
+                    // Display the user input without label
+                    profileInfo.innerHTML += "<p>" + profileData[key] + "</p>";
+                }
+            }
+        }
+
+        // Function to redirect to edit profile page
+        function editProfile() {
+            window.location.href = "edit_profile.html";
+        }
+
+        // Function to handle selecting profile picture
+        function selectProfilePicture() {
+            document.getElementById('file-upload').click();
+        }
+
+        // Function to handle file selection
+        function handleFileSelect(event) {
+            var file = event.target.files[0];
+            var profilePic = document.getElementById('profile-image');
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePic.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    
+    <!-- Hidden file input for selecting profile picture -->
+    <input id="file-upload" type="file" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+</center>
+</div>
+</body>
+</html>

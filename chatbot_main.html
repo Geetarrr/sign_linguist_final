@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Language AI Bot</title>
+  <link href="index_style2.css"  rel="stylesheet" />
+  <link href="chatbot_main.css"  rel="stylesheet" />
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="assets/Logo 14-02-02.png" alt="Website Logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.php">Home</a></li>
+      <li><a href="about.php">About</a></li>
+      <li><a href="quiz.php">Quiz</a></li>
+      <li><a href="games.php">Games</a></li>
+      <li><a href="view.php">Videos</a></li>
+    </ul>
+    <div class="auth-buttons">
+  <a href="register_form.php"><button class="signup-btn">Signup</button></a>
+  <a href="login_form.php"><button class="login-btn">Login</button></a>
+</div>
+
+  </nav>
+
+  <div class="chat-container" style="margin-top: 110px;">
+    <div class="chat-box" id="chat-box"></div>
+    <div style="position: fixed; bottom: 20px; left: 20px;">
+      <input type="text" id="user-input" placeholder="Type your message..." style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 400px; margin-left: 410px;">
+      <button onclick="sendMessage()" style="padding: 10px; border: none; border-radius: 5px; background-color: #f8842b; color: #fff; margin-left: 0px;">Send</button>
+    </div>
+  </div>
+  
+  
+  
+  
+
+  <script src="ai/script.js"></script>
+</body>
+</html>
